@@ -12,12 +12,12 @@ const handleSignin = (req, res, db, bcrypt) => {
         .then(data => {
             const isValid = bcrypt.compareSync(password, data[0].hash);
             if (isValid) {
-                db.select('*').from('customers')
+                db.select('*').from('restaurants')
                     .where('email', '=', email)
-                    .then(customer => {
-                        res.json(customer[0])
+                    .then(restaurant => {
+                        res.json(restaurant[0])
                     })
-                    .catch(err => res.status(400).json('unable to get customer'))
+                    .catch(err => res.status(400).json('unable to get restaurant'))
             } else {
                 res.status(400).json('wrong credentials')
             }
