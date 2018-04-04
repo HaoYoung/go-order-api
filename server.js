@@ -31,7 +31,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get('/', (req, res) => { res.send('it is working!') });
+app.get('/', (req, res) => { res.send('Hello, this is GoOrder Server.') });
 
 app.post('/customer_signin', (req, res) => { customer_signin.handleSignin(req, res, db, bcrypt) });
 app.post('/customer_register', (req, res) => { customer_register.handleRegister(req, res, db, bcrypt) });
