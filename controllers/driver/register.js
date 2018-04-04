@@ -3,7 +3,7 @@ const handleRegister = (req, res, db, bcrypt) => {
     const { fname, lname, email, phone, DLnum, password } = req.body;
     
     // cannot be empty
-    if ( !fname || !lname || !email || !phone || !password){ 
+    if ( !fname || !lname || !email || !phone || !DLnum || !password){ 
         return res.status(400).json('incorrect form submission');
     }
     
@@ -26,6 +26,7 @@ const handleRegister = (req, res, db, bcrypt) => {
                     lname: lname,
                     email: loginEmail[0],
                     phone: phone,
+                    DLnum: DLnum,
                     joined: new Date()
                 })
                 .then(driver => {
