@@ -1,5 +1,4 @@
 const handleRests = (req, res, db) => {
-    
     db.select('*').from('restaurants')
         .then(restaurants => {
             res.json(restaurants)
@@ -8,5 +7,5 @@ const handleRests = (req, res, db) => {
 }
 
 module.exports = {
-    handleSignin: handleRests
+    handleRests: handleRests
 }
