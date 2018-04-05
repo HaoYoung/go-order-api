@@ -1,9 +1,9 @@
 const handleRegister = (req, res, db, bcrypt) => {
     // fname, lname, email, phone, password from request
-    const { name, email, phone, password } = req.body;
+    const { name, email, phone,imgurl, type, password } = req.body;
     
     // cannot be empty
-    if ( !name || !email || !phone || !password){ 
+    if ( !name || !email || !phone || !type || !password){ 
         return res.status(400).json('incorrect form submission');
     }
     
@@ -25,7 +25,9 @@ const handleRegister = (req, res, db, bcrypt) => {
                     name: name,
                     email: loginEmail[0],
                     phone: phone,
-                    joined: new Date()
+                    imgurl: imgurl,
+                    joined: new Date(),
+                    type: type
                 })
                 .then(restaurant => {
                     res.json(restaurant[0]);
