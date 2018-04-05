@@ -7,6 +7,7 @@ const knex = require('knex');
 // Customer variables
 const customer_register = require('./controllers/customer/register');
 const customer_signin = require('./controllers/customer/signin');
+const customer_rests = require('./controllers/customer/rests');
 
 // Restaurant variables
 const restaurant_register = require('./controllers/restaurant/register');
@@ -35,6 +36,7 @@ app.get('/', (req, res) => { res.send('Hello, this is GoOrder Server.') });
 
 app.post('/customer_signin', (req, res) => { customer_signin.handleSignin(req, res, db, bcrypt) });
 app.post('/customer_register', (req, res) => { customer_register.handleRegister(req, res, db, bcrypt) });
+app.get('/rests', (req, res) => { customer_rests.handleRests(req, res, db) });
 
 app.post('/restaurant_signin', (req, res) => { restaurant_signin.handleSignin(req, res, db, bcrypt) });
 app.post('/restaurant_register', (req, res) => { restaurant_register.handleRegister(req, res, db, bcrypt) });

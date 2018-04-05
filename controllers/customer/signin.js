@@ -1,5 +1,5 @@
 const handleSignin = (req, res, db, bcrypt) => {
-    // signin varables from response
+    // signin varables from request
     const { email, password } = req.body;
     
     // cannot be empty
