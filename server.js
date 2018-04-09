@@ -12,11 +12,11 @@ const customer_rests = require('./controllers/customer/rests');
 // Restaurant variables
 const restaurant_register = require('./controllers/restaurant/register');
 const restaurant_signin = require('./controllers/restaurant/signin');
+const rest_update_profile = require('./controllers/restaurant/updateProfile');
 
 // Driver variables
 const driver_register = require('./controllers/driver/register');
 const driver_signin = require('./controllers/driver/signin');
-
 
 // Database variable
 const db = knex({
@@ -40,6 +40,7 @@ app.get('/rests', (req, res) => { customer_rests.handleRests(req, res, db) });
 
 app.post('/restaurant_signin', (req, res) => { restaurant_signin.handleSignin(req, res, db, bcrypt) });
 app.post('/restaurant_register', (req, res) => { restaurant_register.handleRegister(req, res, db, bcrypt) });
+app.post('/restaurant_profile', (req, res) => { rest_update_profile.handleUpdateProfile(req, res, db) });
 
 app.post('/driver_signin', (req, res) => { driver_signin.handleSignin(req, res, db, bcrypt) });
 app.post('/driver_register', (req, res) => { driver_register.handleRegister(req, res, db, bcrypt) });
