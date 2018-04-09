@@ -1,25 +1,24 @@
 const handleUpdateProfile = (req, res, db) => {
     // fname, lname, email, phone, password from request
-    const { id, name, email, phone, imgurl, type } = req.body;
+    const { id, fname, lname, email, phone } = req.body;
     
     // cannot be empty
-    if ( !id ||  !name || !email || !phone || !type ){ 
+    if ( !id || !fname || !lname || !email || !phone ){ 
         return res.status(400).json('incorrect form submission');
     }
     
     // insert data into login table and customer table
-    db('restaurants').where('id', '=', id)
+    db('customers').where('id', '=', id)
         .update({
-          name: name,
+          fname: fname,
+          lname: lname,
           email: email,
-          phone: phone,
-          imgurl: imgurl,
-          type: type
+          phone: phone
         })
-        .then(restaurant => {
-            res.json(restaurant[0]);
+        .then(customer => {
+            res.json(customer[0]);
         })
-        .catch(err => res.status(400).json('unable to update restaurant'))
+        .catch(err => res.status(400).json('unable to update customer'))
 }
 
 module.exports = {
