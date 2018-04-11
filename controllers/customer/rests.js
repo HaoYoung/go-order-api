@@ -25,8 +25,9 @@ const handleRestsList = (req, res, db) => {
                 
             })
             .catch(err => res.status(400).json(err))
-    })
-    .then(res.json(rests));
+    });
+    
+    res.json(rests);
 }
 
 module.exports = {
