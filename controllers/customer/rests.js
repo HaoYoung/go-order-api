@@ -6,7 +6,7 @@ const handleRests = (req, res, db) => {
         .catch(err => res.status(400).json('unable to get restaurants'))
 }
 
-const rests = [];
+const rests = ['hello'];
 
 const handleRestsList = (req, res, db) => {
     const { restTypes } = req.body;
