@@ -10,24 +10,26 @@ const handleRests = (req, res, db) => {
 
 const handleRestsList = (req, res, db) => {
     const { restTypes } = req.body;
-    var rests = ['hello'];
+    var rests = [];
     
     if ( !restTypes ){
         return res.status(400).json('incorrect form submission');
     }
     
-    restTypes.map((type) => {
+    for(var i=0; i<restTypes.length; i++){
         db.select('*').from('restaurants')
-            .where('type', '=', type)
+            .where('type', '=', restTypes[i])
             .then(restaurants => {
                 //res.json(restaurants);
                 rests = rests.concat(restaurants)
-                
             })
             .catch(err => res.status(400).json(err))
-    });
+    }
+    setTimeout(function afterTwoSeconds() {
+        res.json(rests);
+    }, 600)
     
-    res.json(rests);
+    
 }
 
 module.exports = {
