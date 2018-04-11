@@ -21,7 +21,8 @@ const handleRestsList = (req, res, db) => {
             .where('type', '=', type)
             .then(restaurants => {
                 //res.json(restaurants);
-                res.json(rests.concat(restaurants));
+                rests = rests.concat(restaurants)
+                res.json(rests);
             })
             .catch(err => res.status(400).json('unable to get restaurants'))
     })
