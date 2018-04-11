@@ -22,11 +22,11 @@ const handleRestsList = (req, res, db) => {
             .then(restaurants => {
                 //res.json(restaurants);
                 rests = rests.concat(restaurants)
-                res.json(rests);
+                
             })
             .catch(err => res.status(400).json(err))
     })
-    //.then(res.json(rests));
+    .then(res.json(rests));
 }
 
 module.exports = {
