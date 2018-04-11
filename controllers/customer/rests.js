@@ -18,7 +18,8 @@ const handleRestsList = (req, res, db) => {
         db.select('*').from('restaurants')
             .where('type', '=', restTypes[i])
             .then(restaurants => {
-                rests.concat(restaurants)
+                res.json(restaurants);
+                rests.concat(restaurants);
             })
             .catch(err => res.status(400).json('unable to get restaurants'))
     }
