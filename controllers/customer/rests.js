@@ -12,13 +12,11 @@ const handleRestsList = (req, res, db) => {
     
     if ( !restTypes ){
         return res.status(400).json('incorrect form submission');
-    }else{
-        return res.json(restTypes[0]);
     }
     
     for (var i=0; i<restTypes.length; i++){
         db.select('*').from('restaurants')
-            .where('type', '=', type)
+            .where('type', '=', restTypes[i])
             .then(restaurants => {
                 rests.concat(restaurants)
             })
