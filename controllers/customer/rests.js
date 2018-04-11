@@ -20,6 +20,14 @@ const handleRestsList = (req, res, db) => {
                 res.json(restaurants);
             })
             .catch(err => res.status(400).json('unable to get restaurants'))
+        
+        db.select('*').from('restaurants')
+            .where('type', '=', restTypes[1])
+            .then(restaurants => {
+                res.json(restaurants);
+            })
+            .catch(err => res.status(400).json('unable to get restaurants'))
+
 
 
 }
