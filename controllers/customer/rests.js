@@ -6,9 +6,10 @@ const handleRests = (req, res, db) => {
         .catch(err => res.status(400).json('unable to get restaurants'))
 }
 
+const rests = [];
+
 const handleRestsList = (req, res, db) => {
     const { restTypes } = req.body;
-    var rests = [];
     
     if ( !restTypes ){
         return res.status(400).json('incorrect form submission');
@@ -19,11 +20,11 @@ const handleRestsList = (req, res, db) => {
             .where('type', '=', type)
             .then(restaurants => {
                 //res.json(restaurants);
-                rests = rests.concat(restaurants)
+                this.rests = this.rests.concat(restaurants)
             })
             .catch(err => res.status(400).json('unable to get restaurants'))
     })
-    .then(res.json(rests));
+    .then(res.json(this.rests));
 }
 
 module.exports = {
