@@ -15,9 +15,8 @@ const handleRestsList = (req, res, db) => {
     }
     
     restTypes.map((type) => {
-        rests.concat(db.select('*').from('restaurants').where('type', type));
+        res.json(db.select('*').from('restaurants').where('type', type));
     })
-    .then(res.json(rests));
 }
 
 module.exports = {
