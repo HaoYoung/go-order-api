@@ -39,6 +39,7 @@ app.post('/customer_signin', (req, res) => { customer_signin.handleSignin(req, r
 app.post('/customer_register', (req, res) => { customer_register.handleRegister(req, res, db, bcrypt) });
 app.post('/customer_profile', (req, res) => { customer_update_profile.handleUpdateProfile(req, res, db) });
 app.get('/rests', (req, res) => { customer_rests.handleRests(req, res, db) });
+app.post('/rests_list', (req, res) => { customer_rests.handleRestsList(req, res, db) });
 
 app.post('/restaurant_signin', (req, res) => { restaurant_signin.handleSignin(req, res, db, bcrypt) });
 app.post('/restaurant_register', (req, res) => { restaurant_register.handleRegister(req, res, db, bcrypt) });
