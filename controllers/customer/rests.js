@@ -14,15 +14,15 @@ const handleRestsList = (req, res, db) => {
         return res.status(400).json('incorrect form submission');
     }
     
-    restTypes.map((type) => {
+    for (var i=0; i<restTypes.length; i++){
         db.select('*').from('restaurants')
             .where('type', '=', type)
             .then(restaurants => {
                 rests.concat(restaurants)
             })
             .catch(err => res.status(400).json('unable to get restaurants'))
-    }).then( res.json(rests) )
-    
+    }
+    res.json(rests);
 }
 
 module.exports = {
