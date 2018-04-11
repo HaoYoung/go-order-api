@@ -12,6 +12,8 @@ const handleRestsList = (req, res, db) => {
     
     if ( !restTypes ){
         return res.status(400).json('incorrect form submission');
+    }else{
+        return res.json(req.body);
     }
     
     for (var i=0; i<restTypes.length; i++){
