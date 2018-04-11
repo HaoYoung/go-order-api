@@ -12,6 +12,8 @@ const handleRestsList = (req, res, db) => {
     
     if ( !restTypes ){
         return res.status(400).json('incorrect form submission');
+    } else {
+        return res.json(restTypes);
     }
     
     restTypes.map((type) => {
