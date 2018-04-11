@@ -24,7 +24,7 @@ const handleRestsList = (req, res, db) => {
                 rests = rests.concat(restaurants)
                 res.json(rests);
             })
-            .catch(err => res.status(400).json('unable to get restaurants'))
+            .catch(err => res.status(400).json(err))
     })
     //.then(res.json(rests));
 }
