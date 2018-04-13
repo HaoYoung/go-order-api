@@ -6,7 +6,7 @@ const handleGetDishes = (req, res, db) => {
             if (dishes.length){
                 res.json(dishes);
             } else {
-                res.status(400).json('Not found');
+                res.status(400).json(['Not found']);
             }
         })
         .catch(err => res.status(400).json('Error getting dishes'))
