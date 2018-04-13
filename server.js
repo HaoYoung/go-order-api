@@ -15,7 +15,7 @@ const restaurant_register = require('./controllers/restaurant/register');
 const restaurant_signin = require('./controllers/restaurant/signin');
 const rest_update_profile = require('./controllers/restaurant/updateProfile');
 const rest_add_dish = require('./controllers/restaurant/addDish');
-const get_rest_dish = require('./controllers/restaurant/getDishes');
+const get_rest_dishes = require('./controllers/restaurant/getDishes');
 
 // Driver variables
 const driver_register = require('./controllers/driver/register');
