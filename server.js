@@ -15,6 +15,7 @@ const restaurant_register = require('./controllers/restaurant/register');
 const restaurant_signin = require('./controllers/restaurant/signin');
 const rest_update_profile = require('./controllers/restaurant/updateProfile');
 const rest_add_dish = require('./controllers/restaurant/addDish');
+const get_rest_dish = require('./controllers/restaurant/getDishes');
 
 // Driver variables
 const driver_register = require('./controllers/driver/register');
@@ -46,6 +47,7 @@ app.post('/restaurant_signin', (req, res) => { restaurant_signin.handleSignin(re
 app.post('/restaurant_register', (req, res) => { restaurant_register.handleRegister(req, res, db, bcrypt) });
 app.post('/restaurant_profile', (req, res) => { rest_update_profile.handleUpdateProfile(req, res, db) });
 app.post('/rest_add_dish', (req, res) => { rest_add_dish.handleAddDish(req, res, db) });
+app.get('/rest_dishes/:id', (req, res) => { get_rest_dishes.handleGetDishes(req, res, db) });
 
 app.post('/driver_signin', (req, res) => { driver_signin.handleSignin(req, res, db, bcrypt) });
 app.post('/driver_register', (req, res) => { driver_register.handleRegister(req, res, db, bcrypt) });
