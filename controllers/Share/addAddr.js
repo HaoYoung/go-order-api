@@ -18,6 +18,7 @@ const handleAddAddr = (req, res, db, bcrypt) => {
             zip: zip
         })
         .into('address')
+        .returning([])
         .then(data => {
             res.json(data);
         })
