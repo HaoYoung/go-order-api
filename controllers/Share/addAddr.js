@@ -36,7 +36,7 @@ const handleAddAddr = (req, res, db) => {
         .then(trx.commit)
         .catch(trx.rollback)
     })
-    .catch(err => res.status(400).json('Unable to add address'))
+    .catch(err => res.status(400).json(err))
 }
 
 module.exports = {
