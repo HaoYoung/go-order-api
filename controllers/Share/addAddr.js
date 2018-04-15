@@ -1,4 +1,4 @@
-const handleAddAddr = (req, res, db, bcrypt) => {
+const handleAddAddr = (req, res, db) => {
     // fname, lname, email, phone, password from request
     const { login_id, street, suit, city, state, zip } = req.body;
     
