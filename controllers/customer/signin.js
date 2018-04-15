@@ -15,7 +15,7 @@ const handleSignin = (req, res, db, bcrypt) => {
                 db.select('*').from('customers')
                     .where('email', '=', email)
                     .then(customer => {
-                        res.json(data[0])
+                        res.json(customer[0].push(data[0].id))
                     })
                     .catch(err => res.status(400).json('unable to get customer'))
             } else {
