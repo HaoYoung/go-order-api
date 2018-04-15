@@ -8,7 +8,6 @@ const handleAddAddr = (req, res, db) => {
     }
     
     // insert data into address table 
-    //'id', 'login_id', 'street', 'suit', 'city', 'state', 'zip'
     db.transaction(trx => {
         trx.insert({
             login_id: login_id,
@@ -19,7 +18,7 @@ const handleAddAddr = (req, res, db) => {
             zip: zip
         })
         .into('address')
-        .returning([])
+        .returning(['id', 'login_id', 'street', 'suit', 'city', 'state', 'zip'])
         .then(data => {
             res.json(data);
         })
