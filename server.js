@@ -23,6 +23,7 @@ const driver_signin = require('./controllers/driver/signin');
 
 const get_address = require('./controllers/Share/getAddr');
 const add_address = require('./controllers/Share/addAddr');
+const update_address = require('./controllers/Share/updateAddr');
 
 // Database variable
 const db = knex({
@@ -48,6 +49,7 @@ app.post('/rests_list', (req, res) => { customer_rests.handleRestsList(req, res,
 
 app.post('/get_addr', (req, res) => { get_address.handleGetAddr(req, res, db) });
 app.post('/add_addr', (req, res) => { add_address.handleAddAddr(req, res, db) });
+app.post('/update_addr', (req, res) => { update_address.handleUpdateAddr(req, res, db) });
 
 app.post('/restaurant_signin', (req, res) => { restaurant_signin.handleSignin(req, res, db, bcrypt) });
 app.post('/restaurant_register', (req, res) => { restaurant_register.handleRegister(req, res, db, bcrypt) });
