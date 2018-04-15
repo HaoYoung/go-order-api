@@ -17,7 +17,7 @@ const handleAddAddr = (req, res, db, bcrypt) => {
         zip: zip
     }).then(data => {
         res.json(data)
-    }).catch(err => res.status(400).json('Unable to add address'))
+    }).catch(err => res.status(400).json(err))
     
 //    db.transaction(trx => {
 //        trx.insert({
