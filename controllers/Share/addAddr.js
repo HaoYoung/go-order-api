@@ -8,24 +8,35 @@ const handleAddAddr = (req, res, db, bcrypt) => {
     }
     
     // insert data into address table 
-    db.transaction(trx => {
-        trx.insert({
-            login_id: login_id,
-            street: street,
-            suit: suit,
-            city: city,
-            state: state,
-            zip: zip
-        })
-        .into('address')
-        .returning([])
-        .then(data => {
-            res.json(data);
-        })
-        .then(trx.commit)
-        .catch(trx.rollback)
-    })
-    .catch(err => res.status(400).json('Unable to add address'))
+    db('address').insert({
+        login_id: login_id,
+        street: street,
+        suit: suit,
+        city: city,
+        state: state,
+        zip: zip
+    }).then(data => {
+        res.json(data)
+    }).catch(err => res.status(400).json('Unable to add address'))
+    
+//    db.transaction(trx => {
+//        trx.insert({
+//            login_id: login_id,
+//            street: street,
+//            suit: suit,
+//            city: city,
+//            state: state,
+//            zip: zip
+//        })
+//        .into('address')
+//        .returning([])
+//        .then(data => {
+//            res.json(data);
+//        })
+//        .then(trx.commit)
+//        .catch(trx.rollback)
+//    })
+//    .catch(err => res.status(400).json('Unable to add address'))
 }
 
 module.exports = {
