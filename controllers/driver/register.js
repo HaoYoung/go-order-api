@@ -26,7 +26,7 @@ const handleRegister = (req, res, db, bcrypt) => {
                     lname: lname,
                     email: loginEmail[0],
                     phone: phone,
-                    dlnum: DLnum,
+                    dlnum: dlnum,
                     joined: new Date()
                 })
                 .then(driver => {
