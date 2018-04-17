@@ -19,7 +19,7 @@ const handleUpdateAddress = (req, res, db) => {
         .then(address => {
             res.json(address[0]);
         })
-        .catch(err => res.status(400).json('unable to update address'))
+        .catch(err => res.status(400).json(err))
 }
 
 module.exports = {

@@ -1,9 +1,9 @@
 const handleRegister = (req, res, db, bcrypt) => {
     // fname, lname, email, phone, DLnum, password from request
-    const { fname, lname, email, phone, DLnum, password } = req.body;
+    const { fname, lname, email, phone, dlnum, password } = req.body;
     
     // cannot be empty
-    if ( !fname || !lname || !email || !phone || !DLnum || !password){ 
+    if ( !fname || !lname || !email || !phone || !dlnum || !password){ 
         return res.status(400).json('incorrect form submission');
     }
     
