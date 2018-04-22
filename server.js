@@ -24,6 +24,7 @@ const driver_signin = require('./controllers/driver/signin');
 const get_address = require('./controllers/Share/getAddr');
 const add_address = require('./controllers/Share/addAddr');
 const update_address = require('./controllers/Share/updateAddr');
+const driver_main = require('./controllers/driver/driverMain');
 
 // Database variable
 const db = knex({
@@ -59,6 +60,7 @@ app.get('/rest_dishes/:id', (req, res) => { get_rest_dishes.handleGetDishes(req,
 
 app.post('/driver_signin', (req, res) => { driver_signin.handleSignin(req, res, db, bcrypt) });
 app.post('/driver_register', (req, res) => { driver_register.handleRegister(req, res, db, bcrypt) });
+app.get('/orders', (req, res) => { driver_main.handleDelivery(req, res, db) });
 
 
 app.listen(process.env.PORT || 3000, () => {
