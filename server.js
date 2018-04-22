@@ -61,6 +61,7 @@ app.get('/rest_dishes/:id', (req, res) => { get_rest_dishes.handleGetDishes(req,
 app.post('/driver_signin', (req, res) => { driver_signin.handleSignin(req, res, db, bcrypt) });
 app.post('/driver_register', (req, res) => { driver_register.handleRegister(req, res, db, bcrypt) });
 app.get('/orders', (req, res) => { driver_main.handleDelivery(req, res, db) });
+app.get('/driver/:id', (req, res) => {driver_info.handleProfile(req, res, db) });
 
 
 app.listen(process.env.PORT || 3000, () => {
