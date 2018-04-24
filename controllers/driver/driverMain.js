@@ -9,8 +9,8 @@ const handleDelivery = (req, res, db) => {
     
     db.transaction(trx => {
         trx.select('*').from('orders')
-        .join('customers', 'orders.c_id', '=', 'customers.id')
-        .join('address', 'customers.email', '=', 'address.email')
+        .join('customers', 'orders.c_id', '=', 'customers.c_id')
+        .join('customer_addr', 'customers.c_id', '=', 'customer_addr.c_id')
         .then(addr => {
             res.json(addr);
         })
