@@ -1,6 +1,6 @@
 const handleAddAddr = (req, res, db) => {
     // fname, lname, email, phone, password from request
-    const { street, suit, city, state, zip, longitude, latitude } = req.body;
+    const { id, street, suit, city, state, zip, longitude, latitude } = req.body;
     
     // cannot be empty
     if ( !street || !city || !state || !zip ){ 
@@ -10,6 +10,7 @@ const handleAddAddr = (req, res, db) => {
     // insert data into address table 
     db.transaction(trx => {
         trx.insert({
+            r_id: id,
             r_street: street,
             r_suit: suit,
             r_city: city,
