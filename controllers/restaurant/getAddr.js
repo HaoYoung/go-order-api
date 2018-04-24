@@ -1,7 +1,7 @@
 const handleGetAddr = (req, res, db) => {
     const { id } = req.params;
     db.select('*').from('restaurant_addr')
-        .where('r_addr_id', '=', id)
+        .where('r_id', '=', id)
         .then(address => {
             if (address.length){
                 res.json(address[0]);
