@@ -9,6 +9,9 @@ const customer_register = require('./controllers/customer/register');
 const customer_signin = require('./controllers/customer/signin');
 const customer_rests = require('./controllers/customer/rests');
 const customer_update_profile = require('./controllers/customer/updateProfile');
+const customer_get_addr = require('./controllers/customer/getAddr');
+const customer_add_addr = require('./controllers/customer/addAddr');
+const customer_update_addr = require('./controllers/customer/updateAddr');
 
 // Restaurant variables
 const restaurant_register = require('./controllers/restaurant/register');
@@ -16,6 +19,7 @@ const restaurant_signin = require('./controllers/restaurant/signin');
 const rest_update_profile = require('./controllers/restaurant/updateProfile');
 const rest_add_dish = require('./controllers/restaurant/addDish');
 const get_rest_dishes = require('./controllers/restaurant/getDishes');
+const restaurant_get_addr = require('./controllers/restaurant/getAddr');
 
 // Driver variables
 const driver_register = require('./controllers/driver/register');
@@ -47,8 +51,11 @@ app.post('/customer_register', (req, res) => { customer_register.handleRegister(
 app.post('/customer_profile', (req, res) => { customer_update_profile.handleUpdateProfile(req, res, db) });
 app.get('/rests', (req, res) => { customer_rests.handleRests(req, res, db) });
 app.post('/rests_list', (req, res) => { customer_rests.handleRestsList(req, res, db) });
+app.get('/get_c_addr/:id', (req, res) => { customer_get_addr.handleGetAddr(req, res, db) });
+app.post('/add_c_addr', (req, res) => { customer_add_addr.handleAddAddr(req, res, db) });
+app.post('/update_c_addr', (req, res) => { customer_update_addr.handleUpdateAddr(req, res, db) });
 
-app.post('/get_addr', (req, res) => { get_address.handleGetAddr(req, res, db) });
+//app.post('/get_addr', (req, res) => { get_address.handleGetAddr(req, res, db) });
 app.post('/add_addr', (req, res) => { add_address.handleAddAddr(req, res, db) });
 app.post('/update_addr', (req, res) => { update_address.handleUpdateAddress(req, res, db) });
 
@@ -57,6 +64,7 @@ app.post('/restaurant_register', (req, res) => { restaurant_register.handleRegis
 app.post('/restaurant_profile', (req, res) => { rest_update_profile.handleUpdateProfile(req, res, db) });
 app.post('/rest_add_dish', (req, res) => { rest_add_dish.handleAddDish(req, res, db) });
 app.get('/rest_dishes/:id', (req, res) => { get_rest_dishes.handleGetDishes(req, res, db) });
+app.get('/get_r_addr/:id', (req, res) => { restaurant_get_addr.handleGetAddr(req, res, db) });
 
 app.post('/driver_signin', (req, res) => { driver_signin.handleSignin(req, res, db, bcrypt) });
 app.post('/driver_register', (req, res) => { driver_register.handleRegister(req, res, db, bcrypt) });
