@@ -3,7 +3,7 @@ const handleAddAddr = (req, res, db) => {
     const { id, street, suit, city, state, zip, longitude, latitude } = req.body;
     
     // cannot be empty
-    if ( !street || !city || !state || !zip ){ 
+    if ( !id || !street || !city || !state || !zip ){ 
         return res.status(400).json('incorrect form submission');
     }
     
