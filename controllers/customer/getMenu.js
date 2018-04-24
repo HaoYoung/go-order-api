@@ -4,7 +4,7 @@ const handleMenu = (req, res, db) => {
         .where('r_id', '=', id)
         .then(dishes => {
             if (dishes.length){
-                res.json(dishes[0]);
+                res.json(dishes);
             } else {
                 res.status(400).json('Not found');
             }
