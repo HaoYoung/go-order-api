@@ -12,7 +12,7 @@ const handleAddToCart = (req, res, db) => {
         .then(item => {
             if (item.length){
                 //Update
-                 db('shopping_cart').where(item_id, '=', item[0].item_id)
+                 db('shopping_cart').where({c_id: c_id, dish_id: dish_id})
                 .update({
                   quantity: quantity
                 })
