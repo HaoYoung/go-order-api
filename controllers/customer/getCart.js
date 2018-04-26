@@ -6,7 +6,7 @@ const handleGetCart = (req, res, db) => {
             if (items.length){
                 res.json(items);
             } else {
-                res.status(400).json('Not found');
+                res.status(400).json(null);
             }
         })
         .catch(err => res.status(400).json('Error getting shopping cart'))
