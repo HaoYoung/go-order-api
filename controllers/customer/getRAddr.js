@@ -1,7 +1,7 @@
 const handleGetRAddr = (req, res, db) => {
     
     db.select('*').from('restaurant_addr')
-        .join('restaurants', 'r_id', '=', 'r_id')
+        .join('restaurants', 'restaurants.r_id', '=', 'restaurant_addr.r_id')
         .then(address => {
             if (address.length){
                 res.json(address);
