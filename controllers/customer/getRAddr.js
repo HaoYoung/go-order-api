@@ -9,7 +9,7 @@ const handleGetRAddr = (req, res, db) => {
                 res.status(400).json('Not found');
             }
         })
-        .catch(err => res.status(400).json('Error getting all restaurants address'))
+        .catch(err => res.status(400).json(err))
 }
 
 module.exports = {
