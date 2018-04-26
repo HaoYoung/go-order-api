@@ -3,7 +3,7 @@ const handleGetRAddr = (req, res, db) => {
     db.select('*').from('restaurant_addr')
         .then(address => {
             if (address.length){
-                res.json(address[0]);
+                res.json(address);
             } else {
                 res.status(400).json('Not found');
             }
