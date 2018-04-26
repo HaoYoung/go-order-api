@@ -15,6 +15,7 @@ const customer_update_addr = require('./controllers/customer/updateAddr');
 const customer_get_menu = require('./controllers/customer/getMenu');
 const customer_addtocart = require('./controllers/customer/addToCart');
 const customer_getcart = require('./controllers/customer/getCart');
+const customer_getAllRAddr = require('./controllers/customer/getRAddr');
 
 // Restaurant variables
 const restaurant_register = require('./controllers/restaurant/register');
@@ -63,6 +64,7 @@ app.post('/update_c_addr', (req, res) => { customer_update_addr.handleUpdateAddr
 app.get('/menu/:id', (req, res) => { customer_get_menu.handleMenu(req, res, db) });
 app.post('/addtocart', (req, res) => { customer_addtocart.handleAddToCart(req, res, db) });
 app.get('/getcart/:id', (req, res) => { customer_getcart.handleGetCart(req, res, db) });
+app.get('/get_aLL_r_addr', (req, res) => { customer_getAllRAddr.handleGetRAddr(req, res, db) });
 
 //app.post('/get_addr', (req, res) => { get_address.handleGetAddr(req, res, db) });
 app.post('/add_addr', (req, res) => { add_address.handleAddAddr(req, res, db) });
