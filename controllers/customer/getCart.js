@@ -1,6 +1,7 @@
 const handleGetCart = (req, res, db) => {
     const { id } = req.params;
     db.select('*').from('shopping_cart')
+        .join('dishes', 'id', '=', 'dish_id')
         .where('c_id', '=', id)
         .then(items => {
             if (items.length){
