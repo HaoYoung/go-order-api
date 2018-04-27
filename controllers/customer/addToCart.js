@@ -16,11 +16,11 @@ const handleAddToCart = (req, res, db) => {
                 .update({
                   quantity: quantity
                 })
-                .returning(['item_id', 'c_id', 'r_id', 'dish_id', 'quantity'])
-                .then(new_item => {
-                    res.json(new_item[0]);
-                })
-                .catch(err => res.status(400).json(err))
+//                .returning(['item_id', 'c_id', 'r_id', 'dish_id', 'quantity'])
+//                .then(new_item => {
+//                    res.json(new_item[0]);
+//                })
+//                .catch(err => res.status(400).json(err))
             } else {
                 //Insert
                 db('shopping_cart').insert({
@@ -29,12 +29,24 @@ const handleAddToCart = (req, res, db) => {
                     dish_id: dish_id,
                     quantity: quantity
                 })
-                .returning(['item_id', 'c_id', 'r_id', 'dish_id', 'quantity'])
-                .then(data => { res.json(data) })
-                .catch(err => res.status(400).json(err))
+//                .returning(['item_id', 'c_id', 'r_id', 'dish_id', 'quantity'])
+//                .then(data => { res.json(data) })
+//                .catch(err => res.status(400).json(err))
             }
         })
         .catch(err => res.status(400).json(err))
+    
+    db.select('*').from('shopping_cart')
+        .join('dishes', 'dishes.id', '=', 'shopping_cart.dish_id')
+        .where('c_id', '=', c_id)
+        .then(items => {
+            if (items.length){
+                res.json(items);
+            } else {
+                res.status(400).json(null);
+            }
+        })
+        .catch(err => res.status(400).json('Error getting shopping cart'))
     
 }
 
