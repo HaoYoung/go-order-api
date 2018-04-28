@@ -1,6 +1,6 @@
 const handleRemoveFromCart = (req, res, db) => {
     
-    const { item_id } = req.body;
+    const { item_id, c_id } = req.body;
     
     db('shopping_cart')
     .where('item_id', item_id)
