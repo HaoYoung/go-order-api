@@ -29,11 +29,6 @@ const handleAddToCart = (req, res, db) => {
                         })
                         .catch(err => res.status(400).json('Error getting shopping cart'))
                 })
-//                .returning(['item_id', 'c_id', 'r_id', 'dish_id', 'quantity'])
-//                .then(new_item => {
-//                    res.json(new_item[0]);
-//                })
-//                .catch(err => res.status(400).json(err))
             } else {
                 //Insert
                 db('shopping_cart').insert({
@@ -55,9 +50,6 @@ const handleAddToCart = (req, res, db) => {
                         })
                         .catch(err => res.status(400).json('Error getting shopping cart'))
                 })
-//                .returning(['item_id', 'c_id', 'r_id', 'dish_id', 'quantity'])
-//                .then(data => { res.json(data) })
-//                .catch(err => res.status(400).json(err))
             }
         })
         .catch(err => res.status(400).json(err))

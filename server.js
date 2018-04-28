@@ -16,6 +16,7 @@ const customer_get_menu = require('./controllers/customer/getMenu');
 const customer_addtocart = require('./controllers/customer/addToCart');
 const customer_getcart = require('./controllers/customer/getCart');
 const customer_getAllRAddr = require('./controllers/customer/getRAddr');
+const customer_removefromcart = require('./controllers/customer/removeFromCart');
 
 // Restaurant variables
 const restaurant_register = require('./controllers/restaurant/register');
@@ -65,6 +66,7 @@ app.get('/menu/:id', (req, res) => { customer_get_menu.handleMenu(req, res, db) 
 app.post('/addtocart', (req, res) => { customer_addtocart.handleAddToCart(req, res, db) });
 app.get('/getcart/:id', (req, res) => { customer_getcart.handleGetCart(req, res, db) });
 app.get('/get_aLL_r_addr', (req, res) => { customer_getAllRAddr.handleGetRAddr(req, res, db) });
+app.delete('/removefromcart', (req, res) => { customer_removefromcart.handleRemoveFromCart(req, res, db) });
 
 //app.post('/get_addr', (req, res) => { get_address.handleGetAddr(req, res, db) });
 app.post('/add_addr', (req, res) => { add_address.handleAddAddr(req, res, db) });
