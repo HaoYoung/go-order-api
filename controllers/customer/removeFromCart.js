@@ -13,7 +13,7 @@ const handleRemoveFromCart = (req, res, db) => {
                 if (totalItems.length){
                     res.json(totalItems);
                 } else {
-                    res.status(400).json(null);
+                    res.status(400).json([]);
                 }
             })
             .catch(err => res.status(400).json('Error getting shopping cart'))
