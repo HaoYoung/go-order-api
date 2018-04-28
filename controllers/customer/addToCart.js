@@ -3,7 +3,7 @@ const handleAddToCart = (req, res, db) => {
     const { c_id, r_id, dish_id, quantity } = req.body;
     
     // cannot be empty
-    if ( !r_id || !r_id || !dish_id || !quantity ){ 
+    if ( !c_id || !r_id || !dish_id || !quantity ){ 
         return res.status(400).json('incorrect form submission');
     }
     
@@ -15,6 +15,19 @@ const handleAddToCart = (req, res, db) => {
                  db('shopping_cart').where({c_id: c_id, dish_id: dish_id})
                 .update({
                   quantity: quantity
+                })
+                .then(() => {
+                    db.select('*').from('shopping_cart')
+                        .join('dishes', 'dishes.id', '=', 'shopping_cart.dish_id')
+                        .where('c_id', '=', c_id)
+                        .then(totalItems => {
+                            if (totalItems.length){
+                                res.json(totalItems);
+                            } else {
+                                res.status(400).json(null);
+                            }
+                        })
+                        .catch(err => res.status(400).json('Error getting shopping cart'))
                 })
 //                .returning(['item_id', 'c_id', 'r_id', 'dish_id', 'quantity'])
 //                .then(new_item => {
