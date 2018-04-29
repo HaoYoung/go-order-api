@@ -35,6 +35,7 @@ const restaurant_update_addr = require('./controllers/restaurant/updateAddr');
 // Driver variables
 const driver_register = require('./controllers/driver/register');
 const driver_signin = require('./controllers/driver/signin');
+const driver_delivery_order = require('./controllers/driver/orderDeliveried');
 
 const get_address = require('./controllers/Share/getAddr');
 const add_address = require('./controllers/Share/addAddr');
@@ -92,6 +93,7 @@ app.post('/driver_signin', (req, res) => { driver_signin.handleSignin(req, res, 
 app.post('/driver_register', (req, res) => { driver_register.handleRegister(req, res, db, bcrypt) });
 app.get('/orders', (req, res) => { driver_main.handleDelivery(req, res, db) });
 app.get('/driver/:id', (req, res) => {driver_info.handleProfile(req, res, db) });
+app.post('/order_deliveried', (req, res) => { driver_delivery_order.handleOrderDeliveried(req, res, db) });
 
 
 app.listen(process.env.PORT || 3000, () => {
