@@ -8,7 +8,7 @@ const handleOrderDeliveried = (req, res, db) => {
     }
     
     // insert data into login table and customer table
-    db('orders').where('item_id', '=', item_id)
+    db('orders').where('order_id', '=', order_id)
         .update({
           d_id: d_id,
           status: 'deliveried'
