@@ -10,7 +10,7 @@ const handlePlaceOrder = (req, res, db) => {
     db('orders').insert({
         c_id: c_id,
         r_id: r_id,
-        order_content: JSON.stringify(order_content),
+        order_content: order_content,
         regdate: new Date(),
         status: 'wait'
     })
