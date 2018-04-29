@@ -6,6 +6,7 @@ const handleDelivery = (req, res, db) => {
         .join('customer_addr', 'customers.c_id', '=', 'customer_addr.c_id')
         .join('restaurants', 'orders.r_id', '=', 'restaurants.r_id')
         .join('restaurant_addr', 'orders.r_id', '=', 'restaurant_addr.r_id')
+        .where('status', '=', 'wait')
         .then(addr => {
             res.json(addr);
         })
