@@ -1,5 +1,5 @@
 const handleAddToCart = (req, res, db) => {
-    // restaurant-id, name, dish-category, price, img-url from request
+    // customer-id, restaurant-id, dish-id, dish quantity from request
     const { c_id, r_id, dish_id, quantity } = req.body;
     
     // cannot be empty
