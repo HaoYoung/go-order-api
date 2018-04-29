@@ -72,7 +72,7 @@ app.get('/get_aLL_r_addr', (req, res) => { customer_getAllRAddr.handleGetRAddr(r
 app.delete('/removefromcart', (req, res) => { customer_removefromcart.handleRemoveFromCart(req, res, db) });
 app.post('/place_order', (req, res) => { customer_placeOrder.handlePlaceOrder(req, res, db) });
 app.get('/get_my_orders/:id', (req, res) => { customer_getOrder.handleGetOrder(req, res, db) });
-app.post('clear_my_cart', (req, res) => { customer_clearCart.handleClearCart(req, res, db) });
+app.post('/clear_my_cart', (req, res) => { customer_clearCart.handleClearCart(req, res, db) });
 
 //app.post('/get_addr', (req, res) => { get_address.handleGetAddr(req, res, db) });
 app.post('/add_addr', (req, res) => { add_address.handleAddAddr(req, res, db) });
