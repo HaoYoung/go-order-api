@@ -1,6 +1,6 @@
 const handleUpdateAddress = (req, res, db) => {
     // fname, lname, email, phone, password from request
-    const { c_id, street, suit, city, state, zip, longitude, latitude } = req.body;
+    const { c_id, c_street, c_suit, c_city, c_state, c_zip, c_longitude, c_latitude } = req.body;
     
     // cannot be empty
     if ( !street || !city || !state || !zip ){ 
@@ -10,13 +10,13 @@ const handleUpdateAddress = (req, res, db) => {
     // update data into login table and address table
     db('customer_addr').where(c_id, '=', c_id)
         .update({
-          c_street: street,
-          c_suit: suit,
-          c_city: city,
-          c_state: state,
-          c_zip: zip,
-          c_longitude: longitude, 
-          c_latitude: latitude
+          c_street: c_street,
+          c_suit: c_suit,
+          c_city: c_city,
+          c_state: c_state,
+          c_zip: c_zip,
+          c_longitude: c_longitude, 
+          c_latitude: c_latitude
         })
         .then(address => {
             res.json(address[0]);
