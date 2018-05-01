@@ -18,8 +18,12 @@ const handleUpdateAddress = (req, res, db) => {
           c_longitude: c_longitude, 
           c_latitude: c_latitude
         })
-        .then(address => {
-            res.json(address[0]);
+        .then( () => {
+            db.select('*').from('customer_addr')
+            .where('c_id', '=', c_id)
+            .then(myAddress => {
+                res.json(myAddress);
+            })
         })
         .catch(err => res.status(400).json(err))
 }
