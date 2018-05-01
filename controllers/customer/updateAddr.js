@@ -22,7 +22,7 @@ const handleUpdateAddress = (req, res, db) => {
             db.select('*').from('customer_addr')
             .where('c_id', '=', c_id)
             .then(myAddress => {
-                res.json(myAddress);
+                res.json(myAddress[0]);
             })
         })
         .catch(err => res.status(400).json(err))
