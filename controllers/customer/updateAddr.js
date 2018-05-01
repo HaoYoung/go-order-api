@@ -8,7 +8,7 @@ const handleUpdateAddress = (req, res, db) => {
     }
     
     // update data into login table and address table
-    db('customer_addr').where(c_id, '=', c_id)
+    db('customer_addr').where('c_id', '=', c_id)
         .update({
           c_street: c_street,
           c_suit: c_suit,
