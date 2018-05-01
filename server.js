@@ -87,7 +87,7 @@ app.get('/rest_dishes/:id', (req, res) => { get_rest_dishes.handleGetDishes(req,
 app.get('/get_r_addr/:id', (req, res) => { restaurant_get_addr.handleGetAddr(req, res, db) });
 app.get('/get_rest_info/:id', (req, res) => { restaurant_get_info.handleProfile(req, res, db) });
 app.post('/add_r_addr', (req, res) => { restaurant_add_addr.handleAddAddr(req, res, db) });
-app.post('/update_r_addr', (req, res) => { restaurant_update_addr.handleUpdateAddr(req, res, db) })
+app.post('/update_r_addr', (req, res) => { restaurant_update_addr.handleUpdateAddress(req, res, db) })
 
 app.post('/driver_signin', (req, res) => { driver_signin.handleSignin(req, res, db, bcrypt) });
 app.post('/driver_register', (req, res) => { driver_register.handleRegister(req, res, db, bcrypt) });
