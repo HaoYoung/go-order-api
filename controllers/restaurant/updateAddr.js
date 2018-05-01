@@ -8,7 +8,7 @@ const handleUpdateAddress = (req, res, db) => {
     }
     
     // update data into login table and address table
-    db('restaurant_addr').where(r_id, '=', r_id)
+    db('restaurant_addr').where('r_id', '=', r_id)
         .update({
           r_street: street,
           r_suit: suit,
@@ -18,8 +18,12 @@ const handleUpdateAddress = (req, res, db) => {
           r_longitude: longitude, 
           r_latitude: latitude
         })
-        .then(address => {
-            res.json(address[0]);
+        .then( () => {
+            db.select('*').from('restaurant_addr')
+            .where('r_id', '=', r_id)
+            .then(myAddress => {
+                res.json(myAddress[0]);
+            })
         })
         .catch(err => res.status(400).json(err))
 }
